@@ -35,35 +35,26 @@ def union(parent, rank, x,y):
 #==============================================================================
 
 def KruskalMST():
-	result =[]
+	result = []
 	
-	i =0 #index for sorted Edge
-	e =0 #index for result
-	
-	g = sorted(graph, key=lambda item:item[2]) #Sorting on the basis of weight
-#	print(g)
-	parent =[]
-	
-	rank=[]
-	
-	for node in range(V):
-		rank.append(0)
-		parent.append(node)
-	
-	while e < V-1 :
-		print(i)
-		u,v,w = g[i]
+	graphs = sorted(graph , key = lambda item:item[2])
+	parent=[]
+	rank =[0]*V
+	for i in range(V):
+		parent.append(i)
 		
+	i = 0 # index for sorted edges
+	e = 0 # index for result
+	
+	while e < V-1:
+		u,v,w = graphs[i]
 		i += 1
-		
 		x = find(parent, u)
 		y = find(parent, v)
-		
 		if x != y:
+			union(parent, rank, x,y)
 			e += 1
 			result.append([u,v,w])
-			union(parent,rank,x,y)
-			
 	print(result)
 #==============================================================================
 # Graph Implementation	
