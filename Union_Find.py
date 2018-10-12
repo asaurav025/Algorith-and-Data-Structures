@@ -24,7 +24,7 @@ def union(parent, rank, x, y):
 	elif rank[xroot] > rank[yroot]:
 		parent[yroot] = xroot
 	else:
-		parent[xroot]  = yroot
+		parent[xroot]  = yroot # if same then select any one of them as parent and increment its rank by 1
 		rank[yroot] += 1
 		
 		
